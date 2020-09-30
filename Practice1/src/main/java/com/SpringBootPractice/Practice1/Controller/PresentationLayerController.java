@@ -16,6 +16,7 @@ public class PresentationLayerController {
 	@GetMapping(value="/pathvariable/{value}")
 	private static String getPathVariable(@PathVariable(value="value") String values)
 	{
+		System.out.println("helloasdkasbkaa");
 		
 		return values;
 	}
