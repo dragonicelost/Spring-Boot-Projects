@@ -2,10 +2,11 @@ package com.SpringBootPractice.Practice1.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PresentationLayerController {
+public class PresentationLayerController{
 	
 	
 	@GetMapping(value="/helloworld")
@@ -13,12 +14,18 @@ public class PresentationLayerController {
 		return "HELLO WORLD";
 	}
 	
-	@GetMapping(value="/pathvariable/{value}")
-	private static String getPathVariable(@PathVariable(value="value") String values)
+	@GetMapping(value="/pathvariable/{value}") 
+	private static Integer getPathVariable(@PathVariable(value="value") Integer values)
 	{
-		System.out.println("helloasdkasbkaa");
 		
 		return values;
 	}
+	
+	@GetMapping(value="/requestParam")
+	private static String getRequestParam(@RequestParam String name,@RequestParam(value="id") String hi)
+	{
+		return name;
+	}
+	
 	
 }
