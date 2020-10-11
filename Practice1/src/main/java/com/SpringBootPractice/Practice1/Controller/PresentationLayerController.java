@@ -1,13 +1,20 @@
 package com.SpringBootPractice.Practice1.Controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.SpringBootPractice.Practice1.AOP.HellowWorld;
+import com.SpringBootPractice.Practice1.AOP.SpringAop;
 import com.SpringBootPractice.Practice1.APIModel.APIModel;
+import com.SpringBootPractice.Practice1.Service.SampleService;
 
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
@@ -18,16 +25,22 @@ import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Log4j
+
 @Slf4j
 @RestController
 public class PresentationLayerController{
 	
-	
+	private static final Logger logger =  LoggerFactory.getLogger(PresentationLayerController.class);
+	@Autowired
+	SampleService service;
 	
 	@GetMapping(value="/helloworld")
-	private static String  getHelloWorld() {
+	private  String  getHelloWorld() {
+		logger.info("asdasfdsgfhgeytdhnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+		System.out.println(service.getCustomerList().size());
 		return "HELLO WORLD";
+		
+		
 	}
 	
 	@GetMapping(value="/pathvariable/{value}") 
